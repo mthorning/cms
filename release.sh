@@ -3,10 +3,15 @@ set -e
 
 SITE="cms"
 
-rsync -av --progress --delete . $1:~/containers/$SITE --exclude ./data --exclude .git --exclude .gitignore --exclude ./app/node_modules
+rsync --recursive -av --progress --delete \
+    --exclude /.* \
+    --exclude /node_modules \
+    --exclude /build \
+    --exlude release.sh \
+    ../ $1:~/containers/$SITE/app
 
-#ssh $1 << EOF
-#    cd ~/containers/$SITE
-#    docker-compose build
-#    echo y | docker-compose up -d --force-recreate
-#EOF
+ssh $1 << EOF
+    cd ~/containers/$SITE/strapi
+    docker-compose build
+    echo y | docker-compose up -d --force-recreate
+EOF

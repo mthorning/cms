@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "npm run mongo& strapi develop",
+    "dev": "npm run mongo& strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "mongo": "docker run --rm -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=strapi -e MONGO_INITDB_ROOT_PASSWORD=strapi --name mongo_dev mongo",
