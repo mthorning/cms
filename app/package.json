@@ -8,7 +8,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "mongo": "docker run --rm -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=strapi -e MONGO_INITDB_ROOT_PASSWORD=strapi --name mongo_dev mongo",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "release": "../release.sh vps"
   },
   "devDependencies": {},
   "dependencies": {
