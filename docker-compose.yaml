@@ -1,0 +1,29 @@
+version: '2'
+services:
+  cms:
+    build: .
+    container_name: cms_strapi
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+    depends_on:
+      - mongo
+    links:
+      - mongo:mongo
+    ports:
+      - '1337:1337'
+
+  mongo:
+    image: mongo
+    container_name: cms_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: strapi
+      MONGO_INITDB_ROOT_PASSWORD: strapi
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - '27017:27017'

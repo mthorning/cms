@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "name": "Articles"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    },
+    "website": {
+      "model": "website",
+      "via": "articles"
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
